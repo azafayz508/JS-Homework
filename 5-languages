@@ -1,0 +1,13 @@
+switch(language){
+	case 'EN':
+		console.log('Good afternoon!');
+			break;
+	case 'RU':
+		console.log('Добрый день!');
+			break;
+	case 'DE':
+		console.log('Guten tag!');
+			break;
+			default:
+				console.log('Приветствие на этом языке не доступно');
+	}
