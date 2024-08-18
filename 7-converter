@@ -1,0 +1,13 @@
+const USD = 1
+const EU = 0.91;
+const RUB = 89.38;
+
+
+function currencyConversion(amount, from_rate, to_rate){
+	if(typeof(from_rate) !== 'undefined' && typeof(to_rate) !== 'undefined'){
+		const res = (amount / from_rate) * to_rate;
+		return res;
+	} else{
+		return null;
+	}
+}
