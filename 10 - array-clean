@@ -1,0 +1,13 @@
+const numbers = [0, 4, 8, 10, 25];
+
+function reverseFilter(array, fn){
+	const res = [];
+	for(let i = 0; i < array.length; i++){
+		if(!fn(array[i])){
+			res.push(array[i]);
+		}
+	}
+	return res;
+}
+
+console.log(reverseFilter(numbers, (num) => num > 5));
