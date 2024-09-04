@@ -1,0 +1,21 @@
+function algorithmLuna (card){
+	const arr = card.replaceAll('-', '').split('').map(Number);
+	let sumOfOdd = 0;
+	let sumOfEven = 0;
+	if(arr.length !== 16){
+		return false
+	}
+	for (let i = 0; i < arr.length; i = i + 2) {
+		let res = arr[i] * 2;
+		if (res > 9) {
+			res = res - 9;
+		}
+			sumOfOdd = sumOfOdd + res;
+		}
+	for (let j = 1; j < arr.length; j = j + 2) {
+			sumOfEven += arr[j];
+	}
+
+return (sumOfOdd + sumOfEven) % 10 === 0;
+
+};
