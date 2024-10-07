@@ -1,0 +1,15 @@
+const data = {
+	search: 'Вася',
+	take: 10
+};
+
+function queryParameters (obj){
+	const arrayOfParams = Object.entries(obj)
+		.map(([key, value]) => {
+		return `${key}=${value}`;
+		})
+		.join('&')
+	return arrayOfParams;
+}
+
+console.log(queryParameters(data));

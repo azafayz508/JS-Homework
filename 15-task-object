@@ -1,0 +1,45 @@
+'use strict'
+
+const toDoList = {
+	tasks: [
+
+		{
+			title: 'Помыть посуду',
+			id: 1,
+			priority: 2
+		},
+		{
+			title: 'Вымыть полы',
+			id: 2, 
+			priority: 1
+		}
+
+	],
+	taskToFind(id){
+		return this.tasks.find(task => task.id === id);
+	},
+	addTask(title, priority){
+		let lastTaskId = this.tasks[this.tasks.length - 1].id;
+		this.tasks.push({
+			title,
+			id: lastTaskId + 1,
+			priority,
+		})
+	},
+	deleteTask(id){
+		const taskToDelete = this.taskToFind(id);
+		if(taskToDelete){
+			this.tasks.filter(task => task.id !== id)
+		}
+	},
+	updateTask(id, newTitle, newPriority){
+		const taskToBeUpdated = this.taskToFind(id);
+		if(taskToBeUpdated){
+			taskToBeUpdated.title = newTitle;
+			taskToBeUpdated.priority = newPriority;
+		}
+	},
+	sortTaskByPriority(){
+		this.tasks.sort((a, b) => a.priority - b.priority)
+	}
+}

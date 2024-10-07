@@ -1,0 +1,11 @@
+const data = ['10-02-2022', 'тест', '11/12/2023', '00/13/2022', '41/12/2023']
+
+function correctData(array){
+	const res = array
+			.filter(el => el.length === 10)
+			.map(date => date.split(/[-\/]/))
+			.filter(([day, month, year]) => 
+				Number(day) <= Number('31') && 	Number(month) <= '12')
+			.map(([day, month, year]) => [day, month, year].join('/'));
+	return res;
+}

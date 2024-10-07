@@ -1,0 +1,10 @@
+function currencyConversion(sum, initialCurrency, finalCurrency) {
+	const initialIndex = currencyList.indexOf(initialCurrency);
+	const finalIndex = currencyList.indexOf(finalCurrency);
+	if (initialIndex !== -1 && finalIndex !== -1) {
+		const inUSD = sum / exchangeRates[initialIndex];
+		return inUSD * exchangeRates[finalIndex];
+	} else {
+		return 'Invalid currency'
+	}
+}

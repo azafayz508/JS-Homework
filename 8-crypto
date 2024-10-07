@@ -1,0 +1,17 @@
+function crypto (password){
+	const characters = password.split('');
+	let middle = Math.floor(characters.length / 2);
+	let firstHalf = characters.splice(0, middle);
+	let secondHalf = characters;
+	const newPassword = secondHalf.concat(firstHalf).join('')
+	return(newPassword);
+}
+
+function check(encodedPassword, password){
+	const expectedPassword = crypto(password);
+	if(encodedPassword !== expectedPassword){
+		console.log(false)
+		return false;
+	}
+	return true;
+}
