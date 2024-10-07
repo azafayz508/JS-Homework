@@ -1,52 +1,45 @@
 'use strict'
 
-const newTask = {
-	title: 'Помыть полы',
-	id: 2,
-	priority: 1
-};
-
-const newTask2 = {
-	title: 'Вымыть окна',
-	id: 3,
-	priority: 3
-};
-
 const toDoList = {
 	tasks: [
+
 		{
-		title: 'Помыть посуду',
-		id: 1,
-		priority: 2,
+			title: 'Помыть посуду',
+			id: 1,
+			priority: 2
+		},
+		{
+			title: 'Вымыть полы',
+			id: 2, 
+			priority: 1
 		}
+
 	],
-	addTask: function(obj){
-		this.tasks.push(obj);
+	taskToFind(id){
+		return this.tasks.find(task => task.id === id);
 	},
-	deleteTask: function(obj){
-		const index = this.tasks.findIndex(task => task.id === obj.id);
-		if(index !== -1){
-			this.tasks.splice(index, 1);
+	addTask(title, priority){
+		let lastTaskId = this.tasks[this.tasks.length - 1].id;
+		this.tasks.push({
+			title,
+			id: lastTaskId + 1,
+			priority,
+		})
+	},
+	deleteTask(id){
+		const taskToDelete = this.taskToFind(id);
+		if(taskToDelete){
+			this.tasks.filter(task => task.id !== id)
 		}
 	},
-	updateTask: function(newTitle, newPriority, id){	
-		const index = this.tasks.findIndex(task => task.id === id);
-		if(index !== -1){
-			this.tasks[index].title = newTitle;
-			this.tasks[index].priority = newPriority;
+	updateTask(id, newTitle, newPriority){
+		const taskToBeUpdated = this.taskToFind(id);
+		if(taskToBeUpdated){
+			taskToBeUpdated.title = newTitle;
+			taskToBeUpdated.priority = newPriority;
 		}
 	},
-	sortTask: function(){
-		this.tasks.sort((a, b) => a.priority - b.priority);
+	sortTaskByPriority(){
+		this.tasks.sort((a, b) => a.priority - b.priority)
 	}
 }
-
-
-toDoList.addTask(newTask);
-console.log(toDoList.tasks);
-
-toDoList.addTask(newTask2);
-console.log(toDoList.tasks);
-
-toDoList.sortTask();
-toDoList.updateTask('Сделать дз', 1, 2);
