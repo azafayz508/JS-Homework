@@ -34,7 +34,6 @@ const toDoList = {
 	}
 }
 
-
 const newTask = {
 	lastID: 0,
 	tasks:[],
@@ -71,3 +70,5 @@ const newTask = {
 		toDoList.sortByPriority.call(newTask);
 	}
 }
+
+console.log(newTask.tasks);
